@@ -1,5 +1,3 @@
-Here's an example of a `README.md` file for your Flutter project. This `README.md` provides an overview of the project, setup instructions, and details about the main features.
-
 ### `README.md`
 
 ```markdown
