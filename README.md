@@ -45,17 +45,22 @@ Shopping Mastermind is a mobile application designed to help users take control 
 
 ```plaintext
 lib/
-├── main.dart                 # Entry point of the application
+├── main.dart
 ├── screens/
-│   ├── welcome_screen.dart   # Welcome screen with image and text
-│   ├── categories_screen.dart  # Screen for managing categories
-│   ├── items_list_screen.dart  # Screen for listing items
-│   ├── dashboard_screen.dart   # Dashboard screen for tracking progress
-│   ├── settings_screen.dart    # Settings screen for customizing preferences
+│   ├── add_item_screen.dart
+│   ├── calendar_screen.dart
+│   ├── categories_screen.dart
+│   ├── dashboard_screen.dart
+│   ├── faq_screen.dart
+│   ├── items_list_screen.dart
+│   ├── login_screen.dart
+│   ├── main_screen.dart
+│   ├── settings_screen.dart
+│   ├── signup_screen.dart
+│   └── welcome_screen.dart
 ├── widgets/
-│   ├── blue_cover_box.dart   # Reusable widget for blue cover box with text
-assets/
-├── shopping_image.png        # Image used in the welcome screen
+│   └── category_card.dart
+
 ```
 
 ### Usage
