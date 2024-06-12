@@ -16,7 +16,7 @@ class WelcomeScreen extends StatelessWidget {
             Text(
               'Shopping Mastermind',
               style: TextStyle(
-                fontSize: 30,
+                fontSize: 34,
                 fontWeight: FontWeight.bold,
                 color: Colors.blue,
               ),
@@ -24,7 +24,7 @@ class WelcomeScreen extends StatelessWidget {
             Text(
               'Take control and achieve your shopping goals.',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 20),
             ClipRRect(
