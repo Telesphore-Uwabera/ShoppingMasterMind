@@ -1,6 +1,3 @@
-### `README.md`
-
-```markdown
 # Shopping Mastermind
 
 Shopping Mastermind is a mobile application designed to help users take control of their shopping and achieve their shopping goals. The app includes features like category management, item listing, and dashboard for tracking progress, along with customizable settings.
