@@ -81,13 +81,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### Contact
 
-For any queries or issues, please contact [your-email@example.com](mailto:your-email@example.com).
-
-```
-
-### Instructions to Create the `README.md`
-
-1. Open your project directory in your code editor (e.g., VS Code).
-2. Create a new file named `README.md` in the root directory of your project.
-3. Copy the content above and paste it into the `README.md` file.
-4. Save the file.
+For any queries or issues, please contact [telesphore91073@gmail.com](mailto:telesphore91073@gmail.com).
