@@ -1,0 +1,4 @@
+flutter_native_splash:
+  image: assets/shoppingmastermindLogo.png
+  color: "#ffffff"
+  fill: true
