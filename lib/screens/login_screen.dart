@@ -30,6 +30,12 @@ class LoginScreen extends StatelessWidget {
               onPressed: () {
                 // Login action
               },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // background color
+                textStyle: MaterialStateProperty.all<TextStyle>( // text style
+                  TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+              ),
               child: Text('Login'),
             ),
             Text('OR'),
@@ -42,25 +48,8 @@ class LoginScreen extends StatelessWidget {
                     // Facebook login
                   },
                 ),
-                IconButton(
-                  icon: Icon(Icons.twitter),
-                  onPressed: () {
-                    // Twitter login
-                  },
-                ),
-                IconButton(
-                  icon: Icon(Icons.instagram),
-                  onPressed: () {
-                    // Instagram login
-                  },
-                ),
+                // Other social media login buttons can be added here
               ],
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/signup');
-              },
-              child: Text("Don't have an account? Sign up"),
             ),
           ],
         ),

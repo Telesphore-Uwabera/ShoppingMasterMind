@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Sign Up'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -23,12 +26,28 @@ class SignUpScreen extends StatelessWidget {
               decoration: InputDecoration(labelText: 'Password'),
               obscureText: true,
             ),
-            ElevatedButton(
-              onPressed: () {
-                // Sign up action
-              },
-              child: Text('Sign Up'),
+            SizedBox(height: 16),
+            Container(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue, // Background color
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                ),
+                onPressed: () {
+                  // Sign up action
+                },
+                child: Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white, // Text color
+                  ),
+                ),
+              ),
             ),
+            SizedBox(height: 16),
             Text('OR'),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -40,13 +59,7 @@ class SignUpScreen extends StatelessWidget {
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.twitter),
-                  onPressed: () {
-                    // Twitter login
-                  },
-                ),
-                IconButton(
-                  icon: Icon(Icons.instagram),
+                  icon: Icon(Icons.camera),
                   onPressed: () {
                     // Instagram login
                   },
@@ -57,7 +70,10 @@ class SignUpScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/login');
               },
-              child: Text("Already have an account? Login"),
+              child: Text(
+                "Already have an account? Login",
+                style: TextStyle(color: Colors.blue), // Text color
+              ),
             ),
           ],
         ),

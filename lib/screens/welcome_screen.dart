@@ -1,3 +1,4 @@
+// welcome_screen.dart
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -9,10 +10,10 @@ class WelcomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(20.0), // Set the border radius here
+              borderRadius: BorderRadius.circular(20.0),
               child: Image.asset('assets/shopping_image.png'),
-            ), // Replace with your image asset
-            SizedBox(height: 20), // Add space between the image and the text
+            ),
+            SizedBox(height: 20),
             Text(
               'Shopping Mastermind',
               style: TextStyle(
@@ -28,45 +29,26 @@ class WelcomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ClipRRect(
-              borderRadius: BorderRadius.circular(20.0), // Set the border radius here
+              borderRadius: BorderRadius.circular(20.0),
               child: Container(
                 color: Colors.blue,
                 padding: EdgeInsets.all(16.0),
-                child: Text(
-                  "Let's Get Started",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0, // Adjust the font size as needed
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/signup');
+                  },
+                  child: Text(
+                    "Let's Get Started",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                    ),
                   ),
                 ),
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: WelcomeScreen(),
-    routes: {
-      '/login': (context) => LoginScreen(), // Make sure to define this screen
-    },
-  ));
-}
-
-// Add this placeholder for the LoginScreen if you haven't already defined it.
-class LoginScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Login Screen'),
-      ),
-      body: Center(
-        child: Text('Login Screen Content'),
       ),
     );
   }
