@@ -6,7 +6,6 @@ import 'screens/dashboard_screen.dart';
 import 'screens/faq_screen.dart';
 import 'screens/items_list_screen.dart';
 import 'screens/login_screen.dart';
-import 'screens/main_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/signup_screen.dart';
 import 'screens/welcome_screen.dart';
@@ -28,7 +27,6 @@ class MyApp extends StatelessWidget {
         '/welcome': (context) => WelcomeScreen(),
         '/signup': (context) => SignupScreen(),
         '/login': (context) => LoginScreen(),
-        '/main': (context) => MainScreen(),
         '/add_item': (context) => AddItemScreen(),
         '/calendar': (context) => CalendarScreen(),
         '/categories': (context) => CategoriesScreen(),
