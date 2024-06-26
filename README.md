@@ -1,4 +1,3 @@
-```markdown
 # Shopping MasterMind
 
 Shopping MasterMind is a Flutter application designed for efficient shopping management.
