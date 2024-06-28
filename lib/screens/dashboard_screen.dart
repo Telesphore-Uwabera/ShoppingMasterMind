@@ -1,74 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_charts/flutter_charts.dart';
+import 'package:fl_chart/fl_chart.dart';
 
-void main() => runApp(const MyApp());
+class DashboardScreen extends StatefulWidget {
+  @override
+  _DashboardScreenState createState() => _DashboardScreenState();
+}
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Chart Demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Chart Demo'),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Dashboard'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: LineChart(
+          LineChartData(
+            gridData: FlGridData(show: true),
+            titlesData: FlTitlesData(show: true),
+            borderData: FlBorderData(
+              show: true,
+              border: const Border(
+                bottom: BorderSide(color: Colors.black),
+                left: BorderSide(color: Colors.black),
+                right: BorderSide(color: Colors.transparent),
+                top: BorderSide(color: Colors.transparent),
+              ),
+            ),
+            minX: 0,
+            maxX: 8,
+            minY: 0,
+            maxY: 50,
+            lineBarsData: [
+              LineChartBarData(
+                spots: [
+                  FlSpot(1, 15),
+                  FlSpot(2, 24),
+                  FlSpot(3, 12),
+                  FlSpot(4, 23),
+                  FlSpot(5, 20),
+                  FlSpot(6, 33),
+                  FlSpot(7, 15),
+                  FlSpot(8, 45),
+                ],
+                isCurved: true,
+                color: Colors.blue,  // Corrected this line
+                barWidth: 4,
+                belowBarData: BarAreaData(show: false),
+              ),
+            ],
+          ),
         ),
-        body: const ChartScreen(),
       ),
     );
   }
-}
-
-class ChartScreen extends StatefulWidget {
-  const ChartScreen({super.key});
-
-  @override
-  _ChartScreenState createState() => _ChartScreenState();
-}
-
-class _ChartScreenState extends State<ChartScreen> {
-  late ChartData chartData;
-
-  @override
-  void initState() {
-    super.initState();
-    chartData = _createSampleData();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return LineChart(
-      painter: LineChartPainter(),
-      data: chartData,
-    );
-  }
-
-  ChartData _createSampleData() {
-    List<ChartItem> dataItems = [
-      ChartItem(label: '1', value: 15),
-      ChartItem(label: '2', value: 24),
-      ChartItem(label: '3', value: 12),
-      ChartItem(label: '4', value: 23),
-      ChartItem(label: '5', value: 20),
-      ChartItem(label: '6', value: 33),
-      ChartItem(label: '7', value: 15),
-      ChartItem(label: '8', value: 45),
-    ];
-
-    ChartData chartData = ChartData(
-      dataRows: [dataItems.map((item) => item.value).toList()],
-      xLabels: dataItems.map((item) => item.label).toList(),
-      dataRowsColors: [Colors.blue],
-    );
-
-    return chartData;
-  }
-}
-
-class ChartItem {
-  final String label;
-  final double value;
-
-  ChartItem({required this.label, required this.value});
 }

@@ -1,28 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+class AddItemScreen extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'To-Do List',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
-    );
-  }
+  _AddItemScreenState createState() => _AddItemScreenState();
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _AddItemScreenState extends State<AddItemScreen> {
   final _formKey = GlobalKey<FormState>();
   String _itemName = '';
   String _category = 'Furniture';
@@ -33,7 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('To-Do List'),
+        title: Text('Add Item'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -74,20 +59,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 }).toList(),
               ),
               SizedBox(height: 20),
-              DateTimeField(
+              FormBuilderDateTimePicker(
+                name: 'date',
                 decoration: InputDecoration(
                   labelText: 'Date',
                   border: OutlineInputBorder(),
                 ),
+                inputType: InputType.date,
                 format: DateFormat.yMMMd(),
-                onShowPicker: (context, currentValue) {
-                  return showDatePicker(
-                    context: context,
-                    firstDate: DateTime(2022),
-                    initialDate: currentValue ?? DateTime.now(),
-                    lastDate: DateTime(2030),
-                  );
-                },
+                initialValue: _date,
+                onChanged: (value) => setState(() => _date = value ?? DateTime.now()),
                 onSaved: (value) => _date = value!,
               ),
               SizedBox(height: 20),
