@@ -193,8 +193,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ],
         selectedItemColor: Colors.amber[800],
         onTap: (index) {
-          if (index == 2) {
-            Navigator.pushNamed(context, '/add-item');
+          if (index == 1) {
+            Navigator.pushNamed(context, '/calendar');
+          } else if (index == 2) {
+            Navigator.pushNamed(context, '/items-list');
           }
         },
       ),
