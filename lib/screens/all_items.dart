@@ -12,17 +12,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: AllItems(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class AllItems extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<AllItems> {
   final _formKey = GlobalKey<FormState>();
   final List<Map<String, dynamic>> _items = [
     {'title': 'Books', 'isChecked': false},

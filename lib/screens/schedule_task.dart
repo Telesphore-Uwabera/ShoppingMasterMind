@@ -12,13 +12,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Calendar App'),
+      home: ScheduleTask(title: 'Calendar App'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+class ScheduleTask extends StatefulWidget {
+  ScheduleTask({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -26,7 +26,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<ScheduleTask> {
   int _selectedDay = 7;
   DateTime _selectedDate = DateTime(2024, 6, 7);
   List<Event> _events = [
