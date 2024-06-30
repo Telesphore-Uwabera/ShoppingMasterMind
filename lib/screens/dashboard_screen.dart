@@ -233,7 +233,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           if (index == 1) {
             Navigator.pushNamed(context, '/calendar');
           } else if (index == 2) {
-            Navigator.pushNamed(context, '/items-list');
+            Navigator.pushNamed(context, '/items_list');
           }
         },
       ),
