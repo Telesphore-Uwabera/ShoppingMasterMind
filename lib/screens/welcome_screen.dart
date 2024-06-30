@@ -50,6 +50,25 @@ class WelcomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {
+                Navigator.pushNamed(context, '/settings');
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.help),
+              onPressed: () {
+                Navigator.pushNamed(context, '/faq');
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
