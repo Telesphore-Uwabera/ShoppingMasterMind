@@ -31,9 +31,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       sideTitles: SideTitles(
                         showTitles: true,
                         getTitlesWidget: (double value, TitleMeta meta) {
-                          return Text(value.toInt().toString(),
-                              style:
-                              TextStyle(color: Colors.black, fontSize: 10));
+                          return SideTitleWidget(
+                            axisSide: meta.axisSide,
+                            child: Text(
+                              value.toInt().toString(),
+                              style: TextStyle(color: Colors.black, fontSize: 10),
+                            ),
+                          );
                         },
                       ),
                     ),
@@ -41,9 +45,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       sideTitles: SideTitles(
                         showTitles: true,
                         getTitlesWidget: (double value, TitleMeta meta) {
-                          return Text(value.toInt().toString(),
-                              style:
-                              TextStyle(color: Colors.black, fontSize: 10));
+                          return SideTitleWidget(
+                            axisSide: meta.axisSide,
+                            child: Text(
+                              value.toInt().toString(),
+                              style: TextStyle(color: Colors.black, fontSize: 10),
+                            ),
+                          );
                         },
                       ),
                     ),
@@ -87,7 +95,37 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: LineChart(
                 LineChartData(
                   gridData: FlGridData(show: true),
-                  titlesData: FlTitlesData(show: true),
+                  titlesData: FlTitlesData(
+                    show: true,
+                    bottomTitles: AxisTitles(
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        getTitlesWidget: (double value, TitleMeta meta) {
+                          return SideTitleWidget(
+                            axisSide: meta.axisSide,
+                            child: Text(
+                              value.toInt().toString(),
+                              style: TextStyle(color: Colors.black, fontSize: 10),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    leftTitles: AxisTitles(
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        getTitlesWidget: (double value, TitleMeta meta) {
+                          return SideTitleWidget(
+                            axisSide: meta.axisSide,
+                            child: Text(
+                              value.toInt().toString(),
+                              style: TextStyle(color: Colors.black, fontSize: 10),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
                   borderData: FlBorderData(
                     show: true,
                     border: const Border(
@@ -123,9 +161,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
             SizedBox(height: 20),
-            // Third chart (pie chart)
             Container(
-              height: 150, // Reduced the height of the pie chart
+              height: 150,
               child: PieChart(
                 PieChartData(
                   sections: [

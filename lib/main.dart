@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screens/add_item_screen.dart';
+import 'package:shopping_mastermind/screens/all_items.dart';
+import 'screens/schedule_task.dart';
 import 'screens/calendar_screen.dart';
 import 'screens/categories_screen.dart';
 import 'screens/dashboard_screen.dart';
@@ -27,10 +28,12 @@ class MyApp extends StatelessWidget {
         '/welcome': (context) => WelcomeScreen(),
         '/signup': (context) => SignupScreen(),
         '/login': (context) => LoginScreen(),
-        '/add_item': (context) => AddItemScreen(),
+        // '/add_item': (context) => AddItemScreen(),
+        '/items': (context) => AllItems(),
         '/calendar': (context) => CalendarScreen(),
         '/categories': (context) => CategoriesScreen(),
-        '/dashboard': (context) => DashboardScreen(),
+        '/scheduleTasks': (context) => ScheduleTask(title: 'Calendar App',),
+        // '/dashboard': (context) => DashboardScreen(),
         '/faq': (context) => FAQScreen(),
         '/items': (context) => ItemsListScreen(),
         '/settings': (context) => SettingsScreen(),
