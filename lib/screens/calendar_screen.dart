@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'schedule_task.dart'; // Import your schedule_task.dart file
 
 class CalendarScreen extends StatelessWidget {
   @override
@@ -15,6 +16,16 @@ class CalendarScreen extends StatelessWidget {
           lastDay: DateTime.utc(2030, 12, 31),
           focusedDay: DateTime.now(),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ScheduleTask(title: 'Schedule Task')),
+          );
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.blue,
       ),
     );
   }
