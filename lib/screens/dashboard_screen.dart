@@ -183,12 +183,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Shopping records',
+            icon: Icon(Icons.calendar_month),
+            label: 'Calendar',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Add item',
+            icon: Icon(Icons.list),
+            label: 'Items list',
           ),
         ],
         selectedItemColor: Colors.amber[800],
