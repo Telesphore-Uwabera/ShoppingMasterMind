@@ -22,7 +22,6 @@ class CategoriesScreen extends StatelessWidget {
               children: [
                 CategoryCard(icon: Icons.local_grocery_store, label: 'Groceries'),
                 CategoryCard(icon: Icons.flash_on, label: 'Electronics'),
-                // Add more categories here
               ],
             ),
           ),
