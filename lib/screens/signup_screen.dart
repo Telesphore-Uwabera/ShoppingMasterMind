@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dashboard_screen.dart';  // Import the DashboardScreen
 
 class SignupScreen extends StatelessWidget {
   @override
@@ -72,6 +73,19 @@ class SignupScreen extends StatelessWidget {
               },
               child: Text(
                 "Already have an account? Login",
+                style: TextStyle(color: Colors.blue), // Text color
+              ),
+            ),
+            SizedBox(height: 16),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardScreen()),
+                );
+              },
+              child: Text(
+                "Join without an account",
                 style: TextStyle(color: Colors.blue), // Text color
               ),
             ),
