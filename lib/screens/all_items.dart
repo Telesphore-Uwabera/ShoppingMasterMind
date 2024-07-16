@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_mastermind/screens/welcome_screen.dart';
+import 'package:shopping_mastermind/screens/calendar_screen.dart';
+import 'package:shopping_mastermind/screens/items_list_screen.dart';
+import 'package:shopping_mastermind/screens/settings_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,6 +17,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: AllItems(),
+      routes: {
+        '/welcome': (context) => WelcomeScreen(),
+        '/calendar': (context) => CalendarScreen(),
+        '/items_list': (context) => ItemsListScreen(),
+        '/settings': (context) => SettingsScreen(),
+      },
     );
   }
 }
@@ -33,6 +43,29 @@ class _MyHomePageState extends State<AllItems> {
     {'title': 'Cups', 'isChecked': false, 'icon': Icons.coffee},
     {'title': 'phone', 'isChecked': false, 'icon': Icons.phone},
   ];
+
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    switch (index) {
+      case 0:
+        Navigator.pushNamed(context, '/welcome');
+        break;
+      case 1:
+        Navigator.pushNamed(context, '/calendar');
+        break;
+      case 2:
+        Navigator.pushNamed(context, '/items_list');
+        break;
+      case 3:
+        Navigator.pushNamed(context, '/settings');
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,11 +130,13 @@ class _MyHomePageState extends State<AllItems> {
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           iconSize: 40.0,
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: '/welcome'),
-            BottomNavigationBarItem(icon: Icon(Icons.calendar_month_rounded), label: '/calendar'),
-            BottomNavigationBarItem(icon: Icon(Icons.list), label: '/items_list'),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label: '/settings'),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: 'Calendar'),
+            BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Items'),
+            BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
           ],
         ),
       ),
