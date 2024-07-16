@@ -25,13 +25,13 @@ class AllItems extends StatefulWidget {
 class _MyHomePageState extends State<AllItems> {
   final _formKey = GlobalKey<FormState>();
   final List<Map<String, dynamic>> _items = [
-    {'title': 'Books', 'isChecked': false},
-    {'title': 'Shoes', 'isChecked': false},
-    {'title': 'Jeans', 'isChecked': false},
-    {'title': 'Table', 'isChecked': false},
-    {'title': 'Basket', 'isChecked': false},
-    {'title': 'Cups', 'isChecked': false},
-    {'title': 'Tshirt', 'isChecked': false},
+    {'title': 'Books', 'isChecked': false, 'icon': Icons.book},
+    {'title': 'Bags', 'isChecked': false, 'icon': Icons.leave_bags_at_home},
+    {'title': 'Jeans', 'isChecked': false, 'icon': Icons.accessibility},
+    {'title': 'Table', 'isChecked': false, 'icon': Icons.table_chart},
+    {'title': 'Basket', 'isChecked': false, 'icon': Icons.shopping_basket},
+    {'title': 'Cups', 'isChecked': false, 'icon': Icons.coffee},
+    {'title': 'phone', 'isChecked': false, 'icon': Icons.phone},
   ];
 
   @override
@@ -58,7 +58,13 @@ class _MyHomePageState extends State<AllItems> {
                 margin: EdgeInsets.all(10),
                 child: Center(
                   child: CheckboxListTile(
-                    title: Text(_items[index]['title']),
+                    title: Row(
+                      children: [
+                        Icon(_items[index]['icon']), // Display icon based on 'icon' field
+                        SizedBox(width: 16.0),
+                        Text(_items[index]['title']),
+                      ],
+                    ),
                     value: _items[index]['isChecked'],
                     onChanged: (bool? value) {
                       setState(() {
@@ -74,18 +80,15 @@ class _MyHomePageState extends State<AllItems> {
           ),
         ),
       ),
-      floatingActionButton: Container(
-        padding: EdgeInsets.only(bottom: 100),
-        child: FloatingActionButton(
-          onPressed: () {},
-          child: Text(
-            '+',
-            style: TextStyle(color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold),
-          ),
-          backgroundColor: Colors.blue,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Text(
+          '+',
+          style: TextStyle(color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold),
         ),
+        backgroundColor: Colors.blue,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
@@ -95,10 +98,10 @@ class _MyHomePageState extends State<AllItems> {
           type: BottomNavigationBarType.fixed,
           iconSize: 40.0,
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.calendar_month_rounded), label: 'Calendar'),
-            BottomNavigationBarItem(icon: Icon(Icons.note_add_rounded), label: 'Notes'),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: '/welcome'),
+            BottomNavigationBarItem(icon: Icon(Icons.calendar_month_rounded), label: '/calendar'),
+            BottomNavigationBarItem(icon: Icon(Icons.list), label: '/items_list'),
+            BottomNavigationBarItem(icon: Icon(Icons.settings), label: '/settings'),
           ],
         ),
       ),
