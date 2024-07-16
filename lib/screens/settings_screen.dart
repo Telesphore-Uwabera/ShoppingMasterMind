@@ -88,7 +88,7 @@ class SettingsScreen extends StatelessWidget {
             icon: Icons.check_box,
             title: 'To-Do Lists',
             onPressed: (context) {
-              Navigator.pushNamed(context, '/items_list'); // Navigate to To-Do Lists screen
+              Navigator.pushNamed(context, '/all_items'); // Navigate to To-Do Lists screen
             },
           ),
           SettingTile(
