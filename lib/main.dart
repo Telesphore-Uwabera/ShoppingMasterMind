@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_mastermind/screens/all_items.dart';
+import 'package:shopping_mastermind/screens/all_items_screen.dart';
 import 'package:shopping_mastermind/screens/schedule_task.dart';
 import 'package:shopping_mastermind/screens/calendar_screen.dart';
 import 'package:shopping_mastermind/screens/categories_screen.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         '/welcome': (context) => WelcomeScreen(),
         '/signup': (context) => SignupScreen(),
         '/login': (context) => LoginScreen(),
-        '/items': (context) => AllItems(),
+        '/all_items': (context) => AllItems(),
         '/calendar': (context) => CalendarScreen(),
         '/categories': (context) => CategoriesScreen(),
         '/scheduleTasks': (context) => ScheduleTask(title: 'Calendar App'),
