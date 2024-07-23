@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "950472443912",
+    "project_id": "shoppingmasterind",
+    "storage_bucket": "shoppingmasterind.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950472443912:android:b95bded9a5f21dec34e9bd",
+        "android_client_info": {
+          "package_name": "com.example.shopping_mastermind"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3fUwAEUCJLCaQaawrZA9RCVtpRN5_-Y4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
