@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_mastermind/screens/all_items_screen.dart';
 import 'package:shopping_mastermind/screens/schedule_task.dart';
@@ -10,9 +12,14 @@ import 'package:shopping_mastermind/screens/login_screen.dart';
 import 'package:shopping_mastermind/screens/settings_screen.dart';
 import 'package:shopping_mastermind/screens/signup_screen.dart';
 import 'package:shopping_mastermind/screens/welcome_screen.dart';
-import 'package:shopping_mastermind/screens/location_screen.dart'; // Adjust import based on your file structure
+import 'package:shopping_mastermind/screens/location_screen.dart'; 
 
-void main() {
+Future main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if(kIsWeb){
+  await Firebase.initializeApp(options: FirebaseOptions(apiKey: "AIzaSyAYegns9yTqHzp14pJ1I-HWJULJZvjrucU", appId: "1:589050353483:web:8793de13c1e17c1e7cbace", messagingSenderId: "589050353483", projectId: "shoppingmastermind-e056d"))
+}
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
