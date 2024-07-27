@@ -1,18 +1,25 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_mastermind/screens/all_items_screen.dart';
-import 'package:shopping_mastermind/screens/schedule_task.dart';
 import 'package:shopping_mastermind/screens/calendar_screen.dart';
 import 'package:shopping_mastermind/screens/categories_screen.dart';
 import 'package:shopping_mastermind/screens/dashboard_screen.dart';
 import 'package:shopping_mastermind/screens/faq_screen.dart';
 import 'package:shopping_mastermind/screens/items_list_screen.dart';
+import 'package:shopping_mastermind/screens/location_screen.dart'; // Adjust import based on your file structure
 import 'package:shopping_mastermind/screens/login_screen.dart';
+import 'package:shopping_mastermind/screens/schedule_task.dart';
 import 'package:shopping_mastermind/screens/settings_screen.dart';
 import 'package:shopping_mastermind/screens/signup_screen.dart';
 import 'package:shopping_mastermind/screens/welcome_screen.dart';
-import 'package:shopping_mastermind/screens/location_screen.dart'; // Adjust import based on your file structure
 
-void main(){
+import 'firebase_options.dart'; // Import the firebase_options.dart file
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
@@ -24,7 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: WelcomeScreen(),
+      home: WelcomeScreen(), // Adjust based on your application logic
       routes: {
         '/welcome': (context) => WelcomeScreen(),
         '/signup': (context) => SignupScreen(),
@@ -38,7 +45,7 @@ class MyApp extends StatelessWidget {
         '/items_list': (context) => ItemsListScreen(),
         '/settings': (context) => SettingsScreen(),
         '/location': (context) =>
-            LocationSelectionScreen(),
+            LocationSelectionScreen(), // Use LocationSelectionScreen instead of LocationScreen
       },
     );
   }

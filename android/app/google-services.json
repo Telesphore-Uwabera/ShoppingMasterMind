@@ -1,13 +1,33 @@
 {
   "project_info": {
-    "project_number": "1038048347740",
-    "project_id": "signup-login-44a0c",
-    "storage_bucket": "signup-login-44a0c.appspot.com"
+    "project_number": "75127603996",
+    "firebase_url": "https://shopping-61142-default-rtdb.firebaseio.com",
+    "project_id": "shopping-61142",
+    "storage_bucket": "shopping-61142.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1038048347740:android:2b8cdb6ae43193402e4899",
+        "mobilesdk_app_id": "1:75127603996:android:781154c8d1661990bdb0d9",
+        "android_client_info": {
+          "package_name": "com.example.newauthapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo48Am6vdPRIgJq88y4zx3EN5aWEQXNQs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75127603996:android:2385976e9e36aa71bdb0d9",
         "android_client_info": {
           "package_name": "com.example.shopping_mastermind"
         }
@@ -15,7 +35,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDPqljism5T91Cr93wFXDPCBumHqhOq6uE"
+          "current_key": "AIzaSyBo48Am6vdPRIgJq88y4zx3EN5aWEQXNQs"
         }
       ],
       "services": {

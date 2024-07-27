@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     // id 'kotlin-android'
     id 'dev.flutter.flutter-gradle-plugin'
-    id 'com.google.gms.google-services'
+    id 'com.google.gms.google-services'  // Google services plugin
 }
 
 def flutterVersionCode = 1
@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.shopping_mastermind"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 34  // Update to the latest SDK version
         versionCode flutterVersionCode
         versionName flutterVersionName
