@@ -97,7 +97,7 @@ class _ScheduleTaskState extends State<ScheduleTask> {
           },
           child: Text('BUY'),
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+            backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
           ),
         ),
       ],

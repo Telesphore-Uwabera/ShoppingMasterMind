@@ -93,7 +93,7 @@ class _AllItemsState extends State<AllItems> {
                   child: CheckboxListTile(
                     title: Row(
                       children: [
-                        Icon(_items[index]['icon']), // Display icon based on 'icon' field
+                        Icon(_items[index]['icon']),
                         SizedBox(width: 16.0),
                         Text(_items[index]['title']),
                       ],

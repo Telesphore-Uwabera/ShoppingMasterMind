@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_mastermind/screens/welcome_screen.dart';
 import 'package:shopping_mastermind/screens/calendar_screen.dart';
@@ -93,7 +94,7 @@ class _MyHomePageState extends State<AllItems> {
                   child: CheckboxListTile(
                     title: Row(
                       children: [
-                        Icon(_items[index]['icon']), // Display icon based on 'icon' field
+                        Icon(_items[index]['icon']),
                         SizedBox(width: 16.0),
                         Text(_items[index]['title']),
                       ],
@@ -142,4 +143,7 @@ class _MyHomePageState extends State<AllItems> {
       ),
     );
   }
+}
+if(kIsWeb){
+  await Firebase.initializeApp(options: FirebaseOptions(apiKey: apiKey, appId: appId, messagingSenderId: messagingSenderId, projectId: projectId))
 }

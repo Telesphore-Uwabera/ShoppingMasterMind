@@ -12,7 +12,7 @@ import 'package:shopping_mastermind/screens/signup_screen.dart';
 import 'package:shopping_mastermind/screens/welcome_screen.dart';
 import 'package:shopping_mastermind/screens/location_screen.dart'; // Adjust import based on your file structure
 
-void main() {
+void main(){
   runApp(MyApp());
 }
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: WelcomeScreen(),  // Adjust based on your application logic
+      home: WelcomeScreen(),
       routes: {
         '/welcome': (context) => WelcomeScreen(),
         '/signup': (context) => SignupScreen(),
@@ -37,7 +37,8 @@ class MyApp extends StatelessWidget {
         '/faq': (context) => FAQScreen(),
         '/items_list': (context) => ItemsListScreen(),
         '/settings': (context) => SettingsScreen(),
-        '/location': (context) => LocationSelectionScreen(), // Use LocationSelectionScreen instead of LocationScreen
+        '/location': (context) =>
+            LocationSelectionScreen(),
       },
     );
   }

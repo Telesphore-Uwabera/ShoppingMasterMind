@@ -31,8 +31,8 @@ class LoginScreen extends StatelessWidget {
                 // Login action
               },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // background color
-                textStyle: MaterialStateProperty.all<TextStyle>( // text style
+                backgroundColor: WidgetStateProperty.all<Color>(Colors.blue), // background color
+                textStyle: WidgetStateProperty.all<TextStyle>( // text style
                   TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
               ),
