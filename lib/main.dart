@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_mastermind/screens/all_items_screen.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: WelcomeScreen(), // Adjust based on your application logic
+      home: AuthGate(),
       routes: {
         '/welcome': (context) => WelcomeScreen(),
         '/signup': (context) => SignupScreen(),
@@ -46,6 +47,31 @@ class MyApp extends StatelessWidget {
         '/settings': (context) => SettingsScreen(),
         '/location': (context) =>
             LocationSelectionScreen(), // Use LocationSelectionScreen instead of LocationScreen
+      },
+    );
+  }
+}
+
+class AuthGate extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.active) {
+          User? user = snapshot.data;
+          if (user == null) {
+            return LoginScreen();
+          } else {
+            return AllItems();
+          }
+        } else {
+          return Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
       },
     );
   }

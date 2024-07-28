@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_mastermind/screens/welcome_screen.dart';
 import 'package:shopping_mastermind/screens/calendar_screen.dart';
 import 'package:shopping_mastermind/screens/items_list_screen.dart';
 import 'package:shopping_mastermind/screens/settings_screen.dart';
+import 'package:shopping_mastermind/screens/welcome_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -93,7 +93,8 @@ class _MyHomePageState extends State<AllItems> {
                   child: CheckboxListTile(
                     title: Row(
                       children: [
-                        Icon(_items[index]['icon']), // Display icon based on 'icon' field
+                        Icon(_items[index]
+                            ['icon']), // Display icon based on 'icon' field
                         SizedBox(width: 16.0),
                         Text(_items[index]['title']),
                       ],
@@ -117,7 +118,8 @@ class _MyHomePageState extends State<AllItems> {
         onPressed: () {},
         child: Text(
           '+',
-          style: TextStyle(color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.blue,
       ),
@@ -134,9 +136,11 @@ class _MyHomePageState extends State<AllItems> {
           onTap: _onItemTapped,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: 'Calendar'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.calendar_today), label: 'Calendar'),
             BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Items'),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: 'Settings'),
           ],
         ),
       ),
