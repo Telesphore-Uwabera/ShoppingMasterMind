@@ -2,6 +2,12 @@
 
 Shopping MasterMind is a Flutter application designed for efficient shopping management.
 
+## Demo Video
+
+Check out the demo video of the Shopping MasterMind.
+
+[Watch the demo video on YouTube](https://www.youtube.com/watch?v=-21FSaARdBI)
+
 ## Screens
 
 - **Welcome Screen**
