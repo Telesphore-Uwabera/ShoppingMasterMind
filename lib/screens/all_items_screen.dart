@@ -1,31 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:shopping_mastermind/screens/welcome_screen.dart';
-import 'package:shopping_mastermind/screens/calendar_screen.dart';
-import 'package:shopping_mastermind/screens/items_list_screen.dart';
-import 'package:shopping_mastermind/screens/settings_screen.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'All Items',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: AllItems(),
-      routes: {
-        '/welcome': (context) => WelcomeScreen(),
-        '/calendar': (context) => CalendarScreen(),
-        '/items_list': (context) => ItemsListScreen(),
-        '/settings': (context) => SettingsScreen(),
-      },
-    );
-  }
-}
 
 class AllItems extends StatefulWidget {
   @override
@@ -34,15 +9,49 @@ class AllItems extends StatefulWidget {
 
 class _AllItemsState extends State<AllItems> {
   final _formKey = GlobalKey<FormState>();
-  final List<Map<String, dynamic>> _items = [
-    {'title': 'Books', 'isChecked': false, 'icon': Icons.book},
-    {'title': 'Bags', 'isChecked': false, 'icon': Icons.leave_bags_at_home},
-    {'title': 'Jeans', 'isChecked': false, 'icon': Icons.accessibility},
-    {'title': 'Table', 'isChecked': false, 'icon': Icons.table_chart},
-    {'title': 'Basket', 'isChecked': false, 'icon': Icons.shopping_basket},
-    {'title': 'Cups', 'isChecked': false, 'icon': Icons.coffee},
-    {'title': 'Phone', 'isChecked': false, 'icon': Icons.phone},
-  ];
+  final DatabaseReference _database = FirebaseDatabase.instance.ref();
+  List<Map<String, dynamic>> _items = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadItems();
+  }
+
+  Future<void> _loadItems() async {
+    final User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      _database.child('users/${user.uid}/items').onValue.listen((event) {
+        final List<Map<String, dynamic>> loadedItems = [];
+        final data = event.snapshot.value as Map?;
+        if (data != null) {
+          data.forEach((key, value) {
+            loadedItems.add({
+              'key': key,
+              'title': value['title'],
+              'isChecked': value['isChecked'],
+              'icon': IconData(value['icon'], fontFamily: 'MaterialIcons'),
+            });
+          });
+        }
+        setState(() {
+          _items = loadedItems;
+        });
+      });
+    }
+  }
+
+  Future<void> _addItem(String title, IconData icon) async {
+    final User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final newItem = {
+        'title': title,
+        'isChecked': false,
+        'icon': icon.codePoint,
+      };
+      _database.child('users/${user.uid}/items').push().set(newItem);
+    }
+  }
 
   int _selectedIndex = 0;
 
@@ -98,11 +107,12 @@ class _AllItemsState extends State<AllItems> {
                         Text(_items[index]['title']),
                       ],
                     ),
-                    value: _items[index]['isChecked'],
+                    value: _items[index]['isChecked'] ?? false,
                     onChanged: (bool? value) {
                       setState(() {
-                        _items[index]['isChecked'] = value!;
+                        _items[index]['isChecked'] = value ?? false;
                       });
+                      _updateItem(index, value ?? false);
                     },
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
@@ -114,10 +124,14 @@ class _AllItemsState extends State<AllItems> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          // Show a dialog to add a new item
+          _showAddItemDialog(context);
+        },
         child: Text(
           '+',
-          style: TextStyle(color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.blue,
       ),
@@ -134,12 +148,58 @@ class _AllItemsState extends State<AllItems> {
           onTap: _onItemTapped,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: 'Calendar'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.calendar_today), label: 'Calendar'),
             BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Items'),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: 'Settings'),
           ],
         ),
       ),
     );
+  }
+
+  void _showAddItemDialog(BuildContext context) {
+    final TextEditingController titleController = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Add Item'),
+          content: TextField(
+            controller: titleController,
+            decoration: InputDecoration(labelText: 'Item Title'),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                final title = titleController.text.trim();
+                if (title.isNotEmpty) {
+                  _addItem(title, Icons.add);
+                }
+                Navigator.of(context).pop();
+              },
+              child: Text('Add'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _updateItem(int index, bool isChecked) async {
+    final User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final itemKey = _items[index]['key'];
+      _database
+          .child('users/${user.uid}/items/$itemKey')
+          .update({'isChecked': isChecked});
+    }
   }
 }

@@ -1,23 +1,29 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-class DashboardScreen extends StatefulWidget {
-  @override
-  _DashboardScreenState createState() => _DashboardScreenState();
-}
+class DashboardScreen extends StatelessWidget {
+  final User? user;
 
-class _DashboardScreenState extends State<DashboardScreen> {
+  DashboardScreen({this.user});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        title: Text('Dashboard'),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // First chart (bar chart)
+            // Display username
+            Text(
+              'Welcome, ${user?.displayName ?? 'User'}!',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            // Charts and other content
             Container(
               height: 200,
               child: BarChart(
@@ -89,7 +95,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
             SizedBox(height: 20),
-            // Second chart (line chart)
             Container(
               height: 200,
               child: LineChart(
@@ -128,7 +133,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   borderData: FlBorderData(
                     show: true,
-                    border: const Border(
+                    border: Border(
                       bottom: BorderSide(color: Colors.black),
                       left: BorderSide(color: Colors.black),
                       right: BorderSide(color: Colors.transparent),

@@ -11,7 +11,7 @@ class WelcomeScreen extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
-              child: Image.asset('assets/shopping_image.png'),
+              child: Image.asset('assets/shopping_image.png', height: 200, width: 200,),
             ),
             SizedBox(height: 20),
             Text(
