@@ -28,9 +28,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shopping MasterMind',
+      title: 'Shopping Mastermind',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
       home: AuthGate(),
       routes: {
@@ -61,7 +61,8 @@ class AuthGate extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.active) {
           User? user = snapshot.data;
           if (user == null) {
-            return LoginScreen();
+            // Navigate to WelcomeScreen initially
+            return WelcomeScreen();
           } else {
             return AllItems();
           }
