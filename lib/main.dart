@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_mastermind/screens/all_items.dart' as all_items1;
@@ -28,11 +29,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shopping MasterMind',
+      title: 'Shopping Mastermind',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
-      home: WelcomeScreen(),
+      home: AuthGate(),
       routes: {
         '/welcome': (context) => WelcomeScreen(),
         '/signup': (context) => SignupScreen(),
@@ -46,6 +47,32 @@ class MyApp extends StatelessWidget {
         '/items_list': (context) => ItemsListScreen(),
         '/settings': (context) => SettingsScreen(),
         '/location': (context) => LocationSelectionScreen(),
+      },
+    );
+  }
+}
+
+class AuthGate extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.active) {
+          User? user = snapshot.data;
+          if (user == null) {
+            // Navigate to WelcomeScreen initially
+            return WelcomeScreen();
+          } else {
+            return all_items2.AllItems();
+          }
+        } else {
+          return Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
       },
     );
   }

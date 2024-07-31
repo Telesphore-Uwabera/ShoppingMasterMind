@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import 'dashboard_screen.dart'; // Import the DashboardScreen
+import 'package:shopping_mastermind/screens/all_items_screen.dart'; // Import AllItemsScreen
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -19,10 +18,10 @@ class _LoginScreenState extends State<LoginScreen> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-      // Navigate to the DashboardScreen after successful login
+      // Navigate to the AllItemsScreen after successful login
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => DashboardScreen()),
+        MaterialPageRoute(builder: (context) => AllItems()),
       );
     } on FirebaseAuthException catch (e) {
       // Handle login errors

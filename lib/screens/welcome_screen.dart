@@ -1,4 +1,3 @@
-// welcome_screen.dart
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -35,7 +34,7 @@ class WelcomeScreen extends StatelessWidget {
                 padding: EdgeInsets.all(16.0),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/signup');
+                    Navigator.pushNamed(context, '/login');
                   },
                   child: Text(
                     "Let's Get Started",
