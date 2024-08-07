@@ -8,10 +8,6 @@ Check out the demo video of the Shopping MasterMind.
 
 [Watch the demo video on YouTube](https://www.youtube.com/watch?v=-21FSaARdBI)
 
-## Download Our app apk File
-
-[APK File Link](https://drive.google.com/file/d/1U-gmpJudoTtRaQHMqtUveVy-CKr3P0hs/view)
-
 ## Screens
 
 - **Welcome Screen**
